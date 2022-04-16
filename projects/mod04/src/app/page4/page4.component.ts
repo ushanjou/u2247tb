@@ -30,7 +30,7 @@ export class Page4Component implements OnInit {
     event.preventDefault();
     event.stopPropagation();
   }
-  result: string = "";
+  result: string = "0103";
   onchange(event: Event) {
     let selectElement: HTMLSelectElement = <HTMLSelectElement>event.target;
     console.log(selectElement.value);

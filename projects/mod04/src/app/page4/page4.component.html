@@ -1,6 +1,6 @@
 <div>
     你選的是: {{result}} 
-    <select (change)="onchange($event)">     
+    <select (change)="onchange($event)" [value]="result">     
       <option value="0101">Java Script</option>
       <option value="0102">Type Script</option>
       <option value="0103">Angular</option>
