@@ -23,6 +23,13 @@ export class Page4Component implements OnInit {
     console.log(event.target);
     console.log(event.currentTarget);
   }
+  onClick3(event: Event, element:string){    
+    console.log(element);
+    console.log(event.target);
+    console.log(event.currentTarget);
+    event.preventDefault();
+    event.stopPropagation();    
+  }
 
 
 }
