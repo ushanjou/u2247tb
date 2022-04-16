@@ -15,9 +15,14 @@ export class Page4Component implements OnInit {
   SayHi() {
     alert("Hello");
   }
-  onClick(element:string){
+  onClick(element: string) {
     console.log(element);
-}
+  }
+  onClick2(event: Event, element: string) {
+    console.log(element);
+    console.log(event.target);
+    console.log(event.currentTarget);
+  }
 
 
 }
