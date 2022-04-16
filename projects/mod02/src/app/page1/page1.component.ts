@@ -9,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class Page1Component implements OnInit {
   Friends=["Jenny", "Vivid", "Kity","Linda"];
 
-  constructor() { }
+  constructor() {
+    
+   }
 
   ngOnInit(): void {
+    
+  }
+
+  count(){
+    console.log("count()")
+    return this.Friends.length
   }
 
 }

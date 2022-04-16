@@ -1,5 +1,12 @@
 <ul>
-    <li *ngFor="let item of Friends">
-        {{ item }}
+    <!-- last、first、odd、even -->
+    <li *ngFor="let item of Friends; let i=index;let l=last">
+        {{i+1}}: {{ item }}
+        <div *ngIf="l">
+            <hr>
+            count: {{count()}}
+        </div>
     </li>
 </ul>
+
+<p *ngIf="Friends.length >5">朋友很多歐!!</p>
