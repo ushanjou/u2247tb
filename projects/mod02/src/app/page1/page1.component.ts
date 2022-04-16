@@ -18,8 +18,8 @@ export class Page1Component implements OnInit {
   }
 
   count(){
-    console.log("count()")
-    return this.Friends.length
+    console.log("count()");
+    return this.Friends.length;
   }
 
 }
