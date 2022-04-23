@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Meeting Room Form</h1>
-    <form [formGroup]="meetingRoomForm" >
+    <form [formGroup]="meetingRoomForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="name">名稱</label>
              <input type="text" class="form-control"  name="name" formControlName="name">
@@ -22,4 +22,5 @@
           <button type="submit" class="btn btn-success">Submit</button>
     </form>   
 </div>
-{{meetingRoom | json}}
+meetingRoom: {{meetingRoom | json}}<br />
+meetingRoomForm.value: {{meetingRoomForm.value | json}}
