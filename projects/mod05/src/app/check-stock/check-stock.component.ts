@@ -33,17 +33,17 @@ export class CheckStockComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ngAfterContentInit() {
-    console.log("ngAfterContentInit - ");
-    this.spans.forEach((element: any) => {
-      console.log("\t", element);
-    });
-  }
-  ngAfterContentChecked() {
-    console.log("ngAfterContentChecked - ");
-    this.spans.forEach((element: any) => {
-      console.log("\t", element);
-    });
-  }
+  // ngAfterContentInit() {
+  //   console.log("ngAfterContentInit - ");
+  //   this.spans.forEach((element: any) => {
+  //     console.log("\t", element);
+  //   });
+  // }
+  // ngAfterContentChecked() {
+  //   console.log("ngAfterContentChecked - ");
+  //   this.spans.forEach((element: any) => {
+  //     console.log("\t", element);
+  //   });
+  // }
 
 }
