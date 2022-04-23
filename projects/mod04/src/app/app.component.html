@@ -19,12 +19,25 @@
     <li><a href='page3'>Class綁定</a></li>
     <li><a href='page4'>Event綁定</a></li>
     <li><a href='page5'>ngModel</a></li>
+    <li><a href='page7'>*ngFor / *ngSwitch</a></li>
   </ul>
 </div>
 <!-- <SearchBox [searchText]="mySearch" (searchTextChange)="mySearch=$event"></SearchBox> -->
-<SearchBox [(searchText)]="mySearch"></SearchBox>
-<h3 *ngIf="mySearch.length>0">找到了
-  {{mySearch}} !! </h3>
+<!-- <SearchBox [(searchText)]="mySearch"></SearchBox> -->
+<!-- <h3 *ngIf="mySearch.length>0">找到了
+  {{mySearch}} !! </h3> -->
+<!-- <h3 [style.border]="mySearch.length>0 ? 'solid 3px blue' : 'solid 3px red'">
+  <ng-container *ngIf="mySearch.length>0; else notFound">找到了!!</ng-container> 
+  <ng-template #notFound>沒找到ㄡ ...</ng-template>
+</h3> -->
+<SearchBox [(searchText)]="mySearch" (searchTextChange)="onTextChange($event)">
+</SearchBox>
+<h3 [ngStyle]="resultStyles" *ngIf="isTouch">
+  <ng-container *ngIf="isFound; else notFound">
+    找到了 {{mySearch}} !! </ng-container>
+  <ng-template #notFound>
+    沒找到ㄡ ...</ng-template>
+</h3>
 
 <hr>
 <router-outlet></router-outlet>
