@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ContentChildren, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'CheckStock',
@@ -9,6 +9,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CheckStockComponent implements OnInit {
   @Input() Stock: number = 0;
   @Input() QTY = 0;
+  @ContentChildren('span') spans: any;
+
   info = "";   lower = false;
 
   // ngOnChanges(){
@@ -29,6 +31,19 @@ export class CheckStockComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  ngAfterContentInit() {
+    console.log("ngAfterContentInit - ");
+    this.spans.forEach((element: any) => {
+      console.log("\t", element);
+    });
+  }
+  ngAfterContentChecked() {
+    console.log("ngAfterContentChecked - ");
+    this.spans.forEach((element: any) => {
+      console.log("\t", element);
+    });
   }
 
 }
