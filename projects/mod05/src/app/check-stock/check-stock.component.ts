@@ -11,11 +11,16 @@ export class CheckStockComponent implements OnInit {
   @Input() QTY = 0;
   info = "";   lower = false;
 
-  ngOnChanges(){
+  // ngOnChanges(){
+  //   this.lower = (this.Stock < this.QTY);
+  //   this.info = this.lower ? `低於庫存，目前只有 ${this.Stock}` : '';
+  //   console.log("ngOnChanges   - ");
+  // }
+  ngDoCheck() {
     this.lower = (this.Stock < this.QTY);
     this.info = this.lower ? `低於庫存，目前只有 ${this.Stock}` : '';
-    console.log("ngOnChanges   - ");
   }
+
  GetStock(){
     this.Stock=20;
     console.log(this.Stock);
