@@ -1,1 +1,26 @@
-<p>page2 works!</p>
+<div class="container">
+    <h1>Meeting Room Form</h1>
+    <form>
+        <div class="form-group">
+            <label for="name">名稱</label>
+            <input type="text" class="form-control" [(ngModel)]="meetingRoom.name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="size">容納人數</label>
+            <select class="form-control" [(ngModel)]="meetingRoom.size" name="size">
+                <option *ngFor="let cap of capacity" [value]="cap">{{cap}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="projector">投影機</label>
+            <input type="checkbox" class="form-control" [(ngModel)]="meetingRoom.projector" name="projector">
+        </div>
+        <div class="form-group">
+            <label for="TV">電視</label>
+            <input type="checkbox" class="form-control" [(ngModel)]="meetingRoom.TV" name="TV">
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+
+{{meetingRoom | json}}
