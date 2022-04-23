@@ -5,12 +5,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { CheckStockComponent } from './check-stock/check-stock.component';
 import { InTheBoxDirective } from './in-the-box.directive';
+import { USD2TWDPipe } from './usd2-twd.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     CheckStockComponent,
-    InTheBoxDirective
+    InTheBoxDirective,
+    USD2TWDPipe
   ],
   imports: [
     BrowserModule, FormsModule
