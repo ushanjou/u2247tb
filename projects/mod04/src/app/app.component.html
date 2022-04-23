@@ -21,5 +21,10 @@
     <li><a href='page5'>ngModel</a></li>
   </ul>
 </div>
+<!-- <SearchBox [searchText]="mySearch" (searchTextChange)="mySearch=$event"></SearchBox> -->
+<SearchBox [(searchText)]="mySearch"></SearchBox>
+<h3 *ngIf="mySearch.length>0">找到了
+  {{mySearch}} !! </h3>
+
 <hr>
 <router-outlet></router-outlet>
