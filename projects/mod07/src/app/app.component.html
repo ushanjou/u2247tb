@@ -12,7 +12,7 @@
 </style>
 <div class="container" style="margin: 20px">
   <h1>會議室預約單</h1>
-  <form #f='ngForm' (ngSubmit)="f.form.valid" >
+  <form #f='ngForm' (ngSubmit)="f.form.valid">
     <div class="form-group">
       <label for="name">租借人姓名</label>
       <input type="text" class="form-control" id="name" required name="name" minlength="4" [(ngModel)]="rentRoom.name"
@@ -29,7 +29,7 @@
       <label for="Nofpeople">參與人數</label>
       <select class="form-control" id="Nofpeople" required name="Nofpeople" #Nofpeople="ngModel"
         [(ngModel)]="rentRoom.Nofpeople">
-        <option value="" >--請選擇參與人數--</option>
+        <option value="">--請選擇參與人數--</option>
         <option *ngFor="let cap of capacity" [value]="cap">{{cap}}</option>
       </select>
       <div *ngIf="Nofpeople.invalid && (Nofpeople.dirty || Nofpeople.touched)" class="alert alert-danger">
@@ -40,8 +40,7 @@
     <div class="form-group">
       <label for="size">分機號碼</label>
       <input type="text" class="form-control" id="extNo" placeholder="租借者的辦公室分機號碼" required name="extNo"
-        pattern="[0-9]{4}" title="4個數字"
-        CheckExtNo [(ngModel)]="rentRoom.ExtNo" #extNo="ngModel">
+        pattern="[0-9]{4}" title="4個數字" CheckExtNo [(ngModel)]="rentRoom.ExtNo" #extNo="ngModel">
       <div *ngIf="extNo.invalid && (extNo.dirty || extNo.touched)" class="alert alert-danger">
         <div *ngIf="extNo.errors?.['required']">
           分機號碼必須填寫
@@ -49,20 +48,27 @@
         <div *ngIf="extNo.errors?.['pattern']">
           分機號碼必須是四個數字
         </div>
-        <div *ngIf="extNo.errors?. ['CheckExtNo']" >
+        <div *ngIf="extNo.errors?. ['CheckExtNo']">
           分機號碼必須介於1000-1999 之間
-      </div>
-    
+        </div>
+
       </div>
 
     </div>
-    <div class="form-group">
+    <div class="form-group" ngModelGroup="rentDate" #rentDate="ngModelGroup">
       <label for="size">租借時間</label>
-      <input type="datetime" class="form-control" id="startDate" placeholder="起始時間" required name="startDate">
-      <input type="datetime" class="form-control" id="endDate" placeholder="退還時間" required name="endDate">
+      <input type="datetime" class="form-control" id="startDate" placeholder="起始時間"
+       [ngModel]="rentRoom.startDate | date: 'yyyy-MM-dd '" #startDate="ngModel" required name="startDate">
+      <input type="datetime" class="form-control" id="endDate" placeholder="退還時間"
+      [ngModel]="rentRoom.endDate | date: 'yyyy-MM-dd '" #endDate="ngModel" required name="endDate">
+      <div *ngIf="rentDate.invalid && (rentDate.dirty || rentDate.touched)" class="alert alert-danger">
+        <div *ngIf="startDate.errors?.['required'] || endDate.errors?.['required'] ">
+          租借時間必須填寫
+        </div>        
+      </div>
     </div>
     <div>
-      <button type="submit" class="btn btn-success"  [disabled]="f.invalid">Submit</button>
+      <button type="submit" class="btn btn-success" [disabled]="f.invalid">Submit</button>
       <p>Form value: {{ f.value | json }}</p>
       <p>Form status: {{ f.status | json }}</p>
       <p>rentRoom: {{ rentRoom | json }}</p>
