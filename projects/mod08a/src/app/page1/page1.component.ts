@@ -5,6 +5,9 @@ import { Service1Service } from '../service1.service';
   selector: 'app-page1',
   templateUrl: './page1.component.html',
   styles: [
+  ], 
+  providers:[
+    Service1Service
   ]
 })
 export class Page1Component implements OnInit {
