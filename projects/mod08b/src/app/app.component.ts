@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MeetingRoom } from './meeting-room';
+import { MeetingRoomService } from './meeting-room.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mod08b';
+  meetingRooms: MeetingRoom[] = [];
+  constructor(private mrService: MeetingRoomService) {
+    this.mrService.getMeetingRooms().subscribe(
+      resp => this.meetingRooms =  resp,
+      err => console.log(err));
+  }
+
 }
