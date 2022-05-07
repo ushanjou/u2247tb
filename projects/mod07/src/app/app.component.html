@@ -55,7 +55,8 @@
       </div>
 
     </div>
-    <div class="form-group" ngModelGroup="rentDate" #rentDate="ngModelGroup"  [CheckEndDate]="['startDate','endDate'] ">
+    <div class="form-group" ngModelGroup="rentDate" #rentDate="ngModelGroup" 
+     [CheckEndDate]="['startDate','endDate'] ">
       <label for="size">租借時間</label>
       <input type="datetime" class="form-control" id="startDate" placeholder="起始時間"
        [ngModel]="rentRoom.startDate | date: 'yyyy-MM-dd '" #startDate="ngModel" required name="startDate">
