@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { MeetingRoom } from '../meeting-room';
 
 @Component({
@@ -17,6 +18,12 @@ export class Page2Component implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+  submitted: Boolean = false;
+  onSubmit(roomForm: NgForm) {
+    if (roomForm.valid)
+      console.log(roomForm.value);
+    this.submitted = true;
   }
 
 }
