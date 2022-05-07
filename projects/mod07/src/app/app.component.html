@@ -55,7 +55,7 @@
       </div>
 
     </div>
-    <div class="form-group" ngModelGroup="rentDate" #rentDate="ngModelGroup">
+    <div class="form-group" ngModelGroup="rentDate" #rentDate="ngModelGroup"  [CheckEndDate]="['startDate','endDate'] ">
       <label for="size">租借時間</label>
       <input type="datetime" class="form-control" id="startDate" placeholder="起始時間"
        [ngModel]="rentRoom.startDate | date: 'yyyy-MM-dd '" #startDate="ngModel" required name="startDate">
@@ -64,7 +64,11 @@
       <div *ngIf="rentDate.invalid && (rentDate.dirty || rentDate.touched)" class="alert alert-danger">
         <div *ngIf="startDate.errors?.['required'] || endDate.errors?.['required'] ">
           租借時間必須填寫
-        </div>        
+        </div>   
+        <div *ngIf="endDate.errors?.MustGT" >
+          退還時間必須大於起始時間
+      </div>
+           
       </div>
     </div>
     <div>
