@@ -11,11 +11,11 @@ import { AbstractControl, FormGroup, NG_VALIDATORS, ValidationErrors, Validator 
 
 })
 export class CheckEndDateDirective implements Validator {
-  @Input ('CheckEndDate') mustGT: string[]=[];
+  @Input('CheckEndDate') mustGT: string[] = [];
 
   constructor() { }
   validate(fg: AbstractControl): ValidationErrors | null {
-    return MustGT(this.mustGT[0],this.mustGT[1])(<FormGroup>fg);
+    return MustGT(this.mustGT[0], this.mustGT[1])(<FormGroup>fg);
 
   }
 
@@ -29,6 +29,9 @@ export function MustGT(startCtlName: string, endCtlName: string) {
       return null;
     if (endCtl.errors && !endCtl.errors.MustGT)
       return null;
+    if (!(startCtl.value instanceof Date)) {
+      console.log("(!(startCtl.value instanceof Date)) ")
+    }
     let startDate = Date.parse(startCtl.value);
     let endDate = Date.parse(endCtl.value);
     if (endDate <= startDate)

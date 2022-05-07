@@ -58,14 +58,20 @@
     <div class="form-group" ngModelGroup="rentDate" #rentDate="ngModelGroup" 
      [CheckEndDate]="['startDate','endDate'] ">
       <label for="size">租借時間</label>
-      <input type="date" class="form-control" id="startDate" placeholder="起始時間"
+      <!-- <input type="datetime" class="form-control" id="startDate" placeholder="起始時間"
        [ngModel]="rentRoom.startDate | date: 'yyyy-MM-dd '" 
        (ngModelChange)="rentRoom.startDate=$event" [ngModelOptions]="{updateOn:'blur'}" 
        #startDate="ngModel" required name="startDate">
-      <input type="date" class="form-control" id="endDate" placeholder="退還時間"
+      <input type="datetime" class="form-control" id="endDate" placeholder="退還時間"
       [ngModel]="rentRoom.endDate | date: 'yyyy-MM-dd '"
       (ngModelChange)="rentRoom.endDate=$event" [ngModelOptions]="{updateOn:'blur'}" 
-      #endDate="ngModel" required name="endDate">
+      #endDate="ngModel" required name="endDate"> -->
+      <input type="date" class="form-control" id="startDate" placeholder="起始時間"
+      [(ngModel)]="rentRoom.startDate "     
+      #startDate="ngModel" required name="startDate">
+     <input type="date" class="form-control" id="endDate" placeholder="退還時間"
+     [(ngModel)]="rentRoom.endDate"   
+     #endDate="ngModel" required name="endDate">
       <div *ngIf="rentDate.invalid && (rentDate.dirty || rentDate.touched)" class="alert alert-danger">
         <div *ngIf="startDate.errors?.['required'] || endDate.errors?.['required'] ">
           租借時間必須填寫
