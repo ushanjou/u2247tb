@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class Service1Service {
-
-  constructor() { }
+  public a:string;
+  constructor() { 
+    this.a="";
+  }
 }
