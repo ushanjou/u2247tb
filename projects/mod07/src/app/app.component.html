@@ -1,6 +1,18 @@
+<style>
+  .ng-valid[required],
+  .ng-valid.required {
+    border-left: 5px solid #42A948;
+    /* green */
+  }
+
+  .ng-invalid:not(form) {
+    border-left: 5px solid #a94442;
+    /* red */
+  }
+</style>
 <div class="container" style="margin: 20px">
   <h1>會議室預約單</h1>
-  <form novalidate="false">
+  <form #f='ngForm' (ngSubmit)="f.form.valid" >
     <div class="form-group">
       <label for="name">租借人姓名</label>
       <input type="text" class="form-control" id="name" required name="name" minlength="4" [(ngModel)]="rentRoom.name"
@@ -15,13 +27,29 @@
     </div>
     <div class="form-group">
       <label for="Nofpeople">參與人數</label>
-      <input type="number" class="form-control" id="Nofpeople" required name="Nofpeople" placeholder="參與人員1-40名" min="1"
-        max="40">
+      <select class="form-control" id="Nofpeople" required name="Nofpeople" #Nofpeople="ngModel"
+        [(ngModel)]="rentRoom.Nofpeople">
+        <option value="" >--請選擇參與人數--</option>
+        <option *ngFor="let cap of capacity" [value]="cap">{{cap}}</option>
+      </select>
+      <div *ngIf="Nofpeople.invalid && (Nofpeople.dirty || Nofpeople.touched)" class="alert alert-danger">
+        <div *ngIf="Nofpeople.errors?. ['required']">
+          請下拉選擇參與人數</div>
+      </div>
     </div>
     <div class="form-group">
       <label for="size">分機號碼</label>
       <input type="text" class="form-control" id="extNo" placeholder="租借者的辦公室分機號碼" required name="extNo"
-        pattern="[0-9]{4}" title="4個數字">
+        pattern="[0-9]{4}" title="4個數字" [(ngModel)]="rentRoom.ExtNo" #extNo="ngModel">
+      <div *ngIf="extNo.invalid && (extNo.dirty || extNo.touched)" class="alert alert-danger">
+        <div *ngIf="extNo.errors?.['required']">
+          分機號碼必須填寫
+        </div>
+        <div *ngIf="extNo.errors?.['pattern']">
+          分機號碼必須是四個數字
+        </div>
+      </div>
+
     </div>
     <div class="form-group">
       <label for="size">租借時間</label>
@@ -29,7 +57,10 @@
       <input type="datetime" class="form-control" id="endDate" placeholder="退還時間" required name="endDate">
     </div>
     <div>
-      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="submit" class="btn btn-success"  [disabled]="f.invalid">Submit</button>
+      <p>Form value: {{ f.value | json }}</p>
+      <p>Form status: {{ f.status | json }}</p>
+      <p>rentRoom: {{ rentRoom | json }}</p>
     </div>
   </form>
 </div>

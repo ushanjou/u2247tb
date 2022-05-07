@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mod07';
-  rentRoom: any = {};
+  rentRoom = { name: "", Nofpeople: "", ExtNo: "", startDate: "", endDate: "" };
   capacity = ['5人', '10人', '20人', '30人', '40人'];
 }
