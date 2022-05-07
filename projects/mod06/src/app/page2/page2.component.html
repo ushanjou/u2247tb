@@ -11,7 +11,7 @@
     }
 </style>
 
-<div class="container">
+<div class="container" *ngIf="!submitted">
     <h1>Meeting Room Form</h1>
     <form #roomForm="ngForm" (ngSubmit)="onSubmit(roomForm)">
         <div class="form-group">
@@ -36,8 +36,36 @@
             <label for="TV">電視</label>
             <input type="checkbox" class="form-control" [(ngModel)]="meetingRoom.TV" name="TV">
         </div>
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="button" class="btn btn-primary" (click)="newMeetingRoom(); roomForm.reset()">
+            新增會議室</button>
+
+        <button type="submit" class="btn btn-success" [disabled]="roomForm.form.invalid">Submit</button>
     </form>
+    {{meetingRoom | json}}
 </div>
 
-{{meetingRoom | json}}
+
+
+<div class="container" *ngIf="submitted">
+    <h2>以下是你提交的資訊:</h2>
+    <div class="table">
+        <div class="row">
+            <div class="col-4">名稱: </div>
+            <div class="col-6">{{meetingRoom.name}}</div>
+        </div>
+        <div class="row">
+            <div class="col-4">容納人數: </div>
+            <div class="col-6">{{meetingRoom.size}}</div>
+        </div>
+        <div class="row">
+            <div class="col-4">投影機: </div>
+            <div class="col-6">{{meetingRoom.projector}}</div>
+        </div>
+        <div class="row">
+            <div class="col-4">電視: </div>
+            <div class="col-6">{{meetingRoom.TV}}</div>
+        </div>
+    </div>
+    <button class="btn btn-primary" (click)="submitted=false">編修</button>
+    <br>
+</div>
