@@ -9,7 +9,7 @@ import { MeetingRoom } from './meeting-room';
 export class MeetingRoomService {
   public formData: MeetingRoom = { id: 0, name: "", size: -1 };
   public list: MeetingRoom[] = [];
-  readonly rootUrl = 'https://localhost:44300/MeetingRooms'
+  readonly rootUrl = 'https://localhost:44397/MeetingRooms'
   constructor(private http: HttpClient) {
 
   }
