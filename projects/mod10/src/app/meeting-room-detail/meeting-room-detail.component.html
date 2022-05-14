@@ -1,11 +1,10 @@
-<form #form="ngForm" autocomplete="off">
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
     <input type="hidden" name="ID" [value]="service.formData.id">
     <div class="form-group">
         <div class="input-group">
             <div class="input-group-prepend">
                 <div class="input-group-text bg-white">
                     <i class="fas fa-door-open"></i>
-
                 </div>
             </div>
             <input name="Name" class="form-control" placeholder="會議室名稱" required #name="ngModel"
