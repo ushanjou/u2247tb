@@ -24,11 +24,11 @@ export class MeetingRoomDetailComponent implements OnInit {
   ngOnInit() {
     this.resetForm();
 
-    this.toastr.show("show", "Title");
-    this.toastr.success("success", "Title");
-    this.toastr.info("info", "Title");
-    this.toastr.warning("warning", "Title");
-    this.toastr.error("error", "Title");
+//    this.toastr.show("show", "Title");
+//    this.toastr.success("success", "Title");
+//    this.toastr.info("info", "Title");
+//    this.toastr.warning("warning", "Title");
+//    this.toastr.error("error", "Title");
 
   }
   resetForm(form?: NgForm) {
@@ -40,6 +40,7 @@ export class MeetingRoomDetailComponent implements OnInit {
     this.service.postMeetingRoom().subscribe(
       resp => {
         this.resetForm(form);
+        this.toastr.success('新增成功', '會議室資料卡')
         this.service.getList();
       }, err => {
         console.log(err);
@@ -50,6 +51,8 @@ export class MeetingRoomDetailComponent implements OnInit {
     this.service.putMeetingRoom().subscribe(
       resp => {
         this.resetForm(form);
+        this.toastr.info('更新成功', '會議室資料卡')
+
         this.service.getList();
       }, err => {
         console.log(err);
