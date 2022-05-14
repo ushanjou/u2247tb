@@ -1,0 +1,19 @@
+<h4><span *ngIf="this.service.formData.id!=0; else IsNull">
+        你成功預訂了#{{this.id}} -- {{this.service.formData.name}}
+    </span>
+    <ng-template #IsNull>
+        {{this.id}} 不存在
+    </ng-template>
+</h4>
+
+<a routerLink='/booking' routerLinkActive="router-link-active" class="btn btn-warning">
+    <i class="fas fa-arrow-left"></i> 回到前一頁
+</a>
+<br>
+<a routerLink='..' routerLinkActive="router-link-active" class="btn btn-warning">
+        <i class="fas fa-arrow-left"></i> 回到前一頁
+</a>
+<br>
+<a (click)="goback()" class="btn btn-warning">
+    <i class="fas fa-arrow-left"></i> 回到前一頁
+</a>

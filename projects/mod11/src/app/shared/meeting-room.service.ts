@@ -20,13 +20,19 @@ export class MeetingRoomService {
       .then(resp => this.list = resp as MeetingRoom[]);
   }
 
+  getByID(id:number) {
+    this.http.get<MeetingRoom>(this.rootUrl + `/${id}`)
+      .subscribe(resp => this.formData = resp );
+  }
+
+
   postMeetingRoom() {
     return this.http.post(this.rootUrl, this.formData);
   }
   putMeetingRoom() {
     return this.http.put(this.rootUrl + '/' + this.formData.id, this.formData);
   }
-  deleteMeetingRoom(id:number) {
+  deleteMeetingRoom(id: number) {
     return this.http.delete(this.rootUrl + '/' + id);
   }
 }
