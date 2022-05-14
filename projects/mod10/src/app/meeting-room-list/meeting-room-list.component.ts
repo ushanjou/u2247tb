@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MeetingRoom } from '../shared/meeting-room';
 import { MeetingRoomService } from '../shared/meeting-room.service';
 
 @Component({
@@ -14,5 +15,10 @@ export class MeetingRoomListComponent implements OnInit {
     this.service.getList();
   }
 
-
+  public populateForm(mr:MeetingRoom){ 
+    this.service.formData = Object.assign({}, mr);
+      //mr ; 
+    //Object.assign({}, mr);  
+ }
+ 
 }

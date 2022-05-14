@@ -10,10 +10,10 @@
     </thead>
     <tbody>
         <tr *ngFor="let mr of service.list">
-            <td>{{mr.id}}</td>
-            <td>{{mr.name}}</td>
-            <td>{{mr.size}}</td>
-            <td>
+            <td (click)="populateForm(mr)" >{{mr.id}}</td>
+            <td (click)="populateForm(mr)" >{{mr.name}}</td>
+            <td (click)="populateForm(mr)" >{{mr.size}}</td>
+            <td (click)="populateForm(mr)" >
                 {{mr.projector? '投影機 / ': ''}} {{mr.tv? '電視': ''}}
             </td>
             <td> </td>
