@@ -15,6 +15,7 @@ import { MeetingRoomDetailComponent } from './meeting-rooms-app/meeting-room-det
 import { ToastrModule } from 'ngx-toastr';
 import { MeetingRoomService } from './shared/meeting-room.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BookingComponent,
     MeetingRoomsAppComponent,
     MeetingRoomListComponent, 
-    MeetingRoomDetailComponent
+    MeetingRoomDetailComponent, PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
