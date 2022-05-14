@@ -17,6 +17,8 @@ import { MeetingRoomService } from './shared/meeting-room.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BookingDetailComponent } from './booking/booking-detail/booking-detail.component';
+import { Add2CalendarComponent } from './booking/add2-calendar/add2-calendar.component';
+import { RentalDeviceComponent } from './booking/rental-device/rental-device.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import { BookingDetailComponent } from './booking/booking-detail/booking-detail.
     BookingComponent,
     MeetingRoomsAppComponent,
     MeetingRoomListComponent, 
-    MeetingRoomDetailComponent, PageNotFoundComponent, BookingDetailComponent
+    MeetingRoomDetailComponent, PageNotFoundComponent, BookingDetailComponent, Add2CalendarComponent, RentalDeviceComponent
   ],
   imports: [
     BrowserModule,
