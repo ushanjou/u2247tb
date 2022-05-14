@@ -18,9 +18,7 @@ export class MeetingRoomDetailComponent implements OnInit {
     { value: 30, text: "30人" }, { value: 40, text: "40人" },
     { value: 50, text: "50人" }, { value: 100, text: "100人" },
     { value: 200, text: "200人" }]
-  onSizeChange(event: string) {
-    this.service.formData.size = parseInt(event);
-  }
+
   ngOnInit() {
     this.resetForm();
   }
@@ -29,5 +27,33 @@ export class MeetingRoomDetailComponent implements OnInit {
       form.form.reset();
     this.service.formData = new MeetingRoom();
   }
+  insertRecord(form: NgForm) {
+    this.service.postMeetingRoom().subscribe(
+      resp => {
+        this.resetForm(form);
+        this.service.getList();
+      }, err => {
+        console.log(err);
+      }
+    );
+  }
+  updateRecord(form: NgForm) {
+    this.service.putMeetingRoom().subscribe(
+      resp => {
+        this.resetForm(form);
+        this.service.getList();
+      }, err => {
+        console.log(err);
+      }
+    );
+  }
+  onSubmit(form: NgForm){
+ //    this.service.formData.size=Number(this.service.formData.size);
+    if(this.service.formData.id==0)
+      this.insertRecord(form);
+    else
+      this.updateRecord(form);
+    }
+    
 
 }
