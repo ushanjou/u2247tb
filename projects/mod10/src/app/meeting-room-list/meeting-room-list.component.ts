@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MeetingRoomService } from '../shared/meeting-room.service';
 
 @Component({
   selector: 'app-meeting-room-list',
@@ -8,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MeetingRoomListComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(public service: MeetingRoomService) { }
+  ngOnInit() {
+    this.service.getList();
   }
+
 
 }
