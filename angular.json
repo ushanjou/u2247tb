@@ -1227,7 +1227,9 @@
               "projects/mod10/src/assets"
             ],
             "styles": [
-              "projects/mod10/src/styles.css"
+              "projects/mod10/src/styles.css", 
+              "node_modules/ngx-toastr/toastr.css"
+
             ],
             "scripts": []
           },

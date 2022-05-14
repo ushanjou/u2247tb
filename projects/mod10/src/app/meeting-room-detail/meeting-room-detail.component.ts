@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { MeetingRoom } from '../shared/meeting-room';
 import { MeetingRoomService } from '../shared/meeting-room.service';
 
@@ -11,7 +12,8 @@ import { MeetingRoomService } from '../shared/meeting-room.service';
 })
 export class MeetingRoomDetailComponent implements OnInit {
 
-  constructor(public service: MeetingRoomService) { }
+  constructor(public service: MeetingRoomService,
+    private toastr: ToastrService) { }
   public capacity: any[] = [
     { value: 5, text: "5人" }, { value: 10, text: "10人" },
     { value: 15, text: "15人" }, { value: 20, text: "20人" },
@@ -21,6 +23,13 @@ export class MeetingRoomDetailComponent implements OnInit {
 
   ngOnInit() {
     this.resetForm();
+
+    this.toastr.show("show", "Title");
+    this.toastr.success("success", "Title");
+    this.toastr.info("info", "Title");
+    this.toastr.warning("warning", "Title");
+    this.toastr.error("error", "Title");
+
   }
   resetForm(form?: NgForm) {
     if (form != null)
@@ -47,13 +56,13 @@ export class MeetingRoomDetailComponent implements OnInit {
       }
     );
   }
-  onSubmit(form: NgForm){
- //    this.service.formData.size=Number(this.service.formData.size);
-    if(this.service.formData.id==0)
+  onSubmit(form: NgForm) {
+    //    this.service.formData.size=Number(this.service.formData.size);
+    if (this.service.formData.id == 0)
       this.insertRecord(form);
     else
       this.updateRecord(form);
-    }
-    
+  }
+
 
 }
