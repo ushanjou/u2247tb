@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { MeetingRoom } from './meeting-room';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,13 @@ import { MeetingRoom } from './meeting-room';
 export class MeetingRoomService {
   public formData: MeetingRoom = { id: 0, name: "", size: -1 };
   public list: MeetingRoom[] = [];
-  readonly rootUrl = 'https://localhost:44397/MeetingRooms'
+  //readonly rootUrl = 'https://localhost:44397/MeetingRooms'
+  rootUrl='';
+
   constructor(private http: HttpClient) {
+    this.rootUrl = environment.production?
+    'http://localhost/mywebapi/MeetingRooms'
+                 : 'https://localhost:44397/meetingrooms';
 
   }
 
