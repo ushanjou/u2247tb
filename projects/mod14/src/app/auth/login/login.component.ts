@@ -37,5 +37,8 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+  onGLogin() {
+    this.authService.gLogin();
+  }
 
 }

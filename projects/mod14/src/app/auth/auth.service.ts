@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { Observable, of } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
 
@@ -7,9 +8,20 @@ import { delay, tap } from 'rxjs/operators';
 })
 export class AuthService {
 
-  constructor() {
+  constructor(private socialAuthService: SocialAuthService) {
     this.IsAuthenticate = localStorage.getItem('IsAuthenticate') ? true : false;
     this.userName = this.IsAuthenticate ? localStorage.getItem("UserName") : "";
+
+    this.socialAuthService.authState.subscribe((user) => {
+      this.IsAuthenticate = (user != null);
+      if (this.IsAuthenticate) {
+        console.log(user);
+        this.userName = this.IsAuthenticate ? user.firstName : "";
+        this.Role = "Users";
+        this.saveState();
+      }
+    });
+
   }
 
   public IsAuthenticate: boolean = false;
@@ -18,6 +30,11 @@ export class AuthService {
   loginType: string = "Normal";
 
   logout(): void {
+    if (this.loginType === "gLogin") {
+      this.socialAuthService.signOut();
+    }
+
+
     this.IsAuthenticate = false;
     localStorage.removeItem('IsAuthenticate');
     localStorage.removeItem('Role');
@@ -41,6 +58,12 @@ export class AuthService {
       })
     );
   }
+
+  gLogin() {
+    this.loginType = "gLogin";
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
 
   saveState() {
     localStorage.setItem('IsAuthenticate', this.IsAuthenticate.toString());
