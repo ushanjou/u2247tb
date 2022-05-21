@@ -1,3 +1,4 @@
+import { registerLocaleData } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,6 +10,9 @@ import { LoginComponent } from './auth/login/login.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { UserNameComponent } from './auth/user-name/user-name.component';
 import { HomeComponent } from './home/home.component';
+import localeZH from "@angular/common/locales/zh";
+import localefr from "@angular/common/locales/fr";
+import localede from "@angular/common/locales/de";
 
 @NgModule({
   declarations: [
@@ -42,3 +46,8 @@ import { HomeComponent } from './home/home.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+registerLocaleData(localeZH, "zh");
+registerLocaleData(localefr, "fr");
+registerLocaleData(localede, "de");
+

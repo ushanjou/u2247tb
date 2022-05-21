@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class HomeComponent implements OnInit {
+  today =Date.now();
+  amount = 38500; 
+  price = 30.25;
 
   constructor() { }
 
