@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { HomeComponent } from './home/home.component';
+import { UserNameComponent } from './auth/user-name/user-name.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     LogoutComponent, 
     AdminPageComponent,
-    HomeComponent
+    HomeComponent,
+    UserNameComponent
   ],
   imports: [
     BrowserModule,
