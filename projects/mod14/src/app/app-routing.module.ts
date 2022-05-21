@@ -8,11 +8,20 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LogoutComponent }, 
-  { path: 'home', component: HomeComponent},
-  { path: 'adminpage', component: AdminPageComponent, 
-    canActivate: [SimpleGuard]},
-  { path: '' , redirectTo: 'home', pathMatch: 'full' },
+  { path: 'logout', component: LogoutComponent },
+  { path: 'home', component: HomeComponent },
+  {
+    path: 'adminpage', component: AdminPageComponent,
+    canActivate: [SimpleGuard]
+  },
+  {
+    path: 'membercenter',
+    loadChildren:
+      () => import('./member-center/member-center.module')
+        .then(m => m.MemberCenterModule),
+    canLoad: [SimpleGuard]
+  },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 

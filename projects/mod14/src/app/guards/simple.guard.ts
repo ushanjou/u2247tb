@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵɵsetComponentScope } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanDeactivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -27,7 +27,17 @@ export class SimpleGuard implements CanActivate, CanLoad {
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+    console.log(segments);
+    let url: string = segments[0].path;
+    console.log(segments[0].parameters["name"]);
+    const result: boolean =
+      segments[0].parameters["name"] === 'user1';
+    if (!result) {
+      alert('你不是會員，無法使用此功能');
+      return this.router.parseUrl('/login?rUrl=' + url);
+    }
+    return result;
+
   }
 
 }
