@@ -4,6 +4,8 @@
 <input type="hidden" [(ngModel)]="authService.IsAuthenticate" >
 <span *ngIf="authService.IsAuthenticate; else isLogout">
   <a class="nav-link" routerLink="/logout">登出</a>
+  <app-user-name></app-user-name>
+
 </span>
 <ng-template #isLogout>
   <a class="nav-link" routerLink="/login">登入</a>
