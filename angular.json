@@ -1227,9 +1227,8 @@
               "projects/mod10/src/assets"
             ],
             "styles": [
-              "projects/mod10/src/styles.css", 
+              "projects/mod10/src/styles.css",
               "node_modules/ngx-toastr/toastr.css"
-
             ],
             "scripts": []
           },
@@ -1349,7 +1348,7 @@
               "projects/mod11/src/assets"
             ],
             "styles": [
-              "projects/mod11/src/styles.css", 
+              "projects/mod11/src/styles.css",
               "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
@@ -1724,6 +1723,12 @@
           "strict": true
         }
       },
+      "i18n": {
+        "sourceLocale": "zh",
+        "locales": {
+          "en-US": "projects/mod15/src/locale/message.en-US.xlf"
+        }},
+
       "root": "projects/mod15",
       "sourceRoot": "projects/mod15/src",
       "prefix": "app",
@@ -1746,6 +1751,16 @@
             "scripts": []
           },
           "configurations": {
+            "en-US": {
+              "localize": [
+                "en-US"
+              ]
+            },
+            "zh": {
+              "localize": [
+                "zh"
+              ]
+            },
             "production": {
               "budgets": [
                 {
@@ -1781,8 +1796,15 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
+
             "production": {
               "browserTarget": "mod15:build:production"
+            },
+            "zh": {
+              "browserTarget": "mod15:build:zh"
+            },
+            "en-US": {
+              "browserTarget": "mod15:build:en-US"
             },
             "development": {
               "browserTarget": "mod15:build:development"

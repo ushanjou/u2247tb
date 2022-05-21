@@ -37,7 +37,7 @@ import localede from "@angular/common/locales/de";
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '59192101206-35v9ftdt98u5a2bb44nqrhkvpstbppov.apps.googleusercontent.com'
+              '269094727671-dat9luqp3ecpoqiv5054u01u6afgmg37.apps.googleusercontent.com'
             )
           }
         ]
