@@ -1743,7 +1743,9 @@
             "tsConfig": "projects/mod15/tsconfig.app.json",
             "assets": [
               "projects/mod15/src/favicon.ico",
-              "projects/mod15/src/assets"
+              "projects/mod15/src/assets", 
+              "projects/mod15/src/web.config"
+
             ],
             "styles": [
               "projects/mod15/src/styles.css"

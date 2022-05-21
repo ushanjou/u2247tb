@@ -3,7 +3,7 @@
         <script>
             let ulang = navigator.language || navigator.userLanguage
             console.log('瀏覽器語言:' + ulang);
-            if(ulang!=null && typeof ulang!==undefined && usulangerLang.includes('en-US')){
+            if(ulang!=null && typeof ulang!==undefined && ulang.includes('en-US')){
                 ulang='en-US';
             }else{
                 ulang='zh';
