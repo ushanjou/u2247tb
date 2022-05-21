@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     console.log(`${this.userName} / ${this.password}`)
     this.authService.login(this.userName, this.password).subscribe(
       data => {
-        console.log("IsAuth:" + data);
+        console.log($localize`是否驗證? ${data}`);
         if (this.rUrl && this.rUrl.length > 0)
           this.router.navigate([this.rUrl]);
         else {
